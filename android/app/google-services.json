@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "211338899117",
+    "project_id": "amplispot-test",
+    "storage_bucket": "amplispot-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211338899117:android:e0be087ebf5cc35651a024",
+        "android_client_info": {
+          "package_name": "com.amplispot.test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyoLJPAN6fSl1gZbt44qdiVvMJqWpdAqo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

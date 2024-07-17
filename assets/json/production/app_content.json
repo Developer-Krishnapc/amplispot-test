@@ -1,0 +1,91 @@
+{
+   "status": 200,
+   "data": {
+      "customization_settings": [
+         {
+            "order": 0,
+            "configs": {
+               "top": 1035,
+               "left": 136,
+               "font_size": 16,
+               "allignment": {
+                  "text": "Left",
+                  "value": "left"
+               },
+               "dimensions": {
+                  "width": 162,
+                  "height": 156
+               },
+               "font_color": "000000",
+               "font_style": {
+                  "name": "Arial",
+                  "links": {
+                     "ttf": "https://amplispot-india.sgp1.cdn.digitaloceanspaces.com/fonts/arial.ttf"
+                  }
+               },
+               "font_weight": {
+                  "text": "Normal",
+                  "value": "normal"
+               }
+            },
+            "$$hashKey": "object:8728",
+            "title": "profile_pic",
+            "value": "https://firebasestorage.googleapis.com/v0/b/amplispot-test.appspot.com/o/1659716733526.jpg?alt=media&token=d4eac518-6a21-4342-9cc0-994daac74f1a"
+         },
+         {
+            "order": 0,
+            "configs": {
+               "top": 1152,
+               "left": 329,
+               "font_size": 32,
+               "allignment": {
+                  "text": "Left",
+                  "value": "left"
+               },
+               "font_color": "FFFFFF",
+               "font_style": {
+                  "name": "Arial Bold",
+                  "links": {
+                     "ttf": "https://amplispot-india.sgp1.cdn.digitaloceanspaces.com/fonts/arialbd.ttf"
+                  }
+               },
+               "font_weight": {
+                  "text": "Bold",
+                  "value": "bold"
+               }
+            },
+            "$$hashKey": "object:8740",
+            "title": "name",
+            "value": "Lenin Furtado"
+         },
+         {
+            "order": 0,
+            "configs": {
+               "top": 1153,
+               "left": 868,
+               "font_size": 32,
+               "allignment": {
+                  "text": "Left",
+                  "value": "left"
+               },
+               "font_color": "FFFFFF",
+               "font_style": {
+                  "name": "Arial Bold",
+                  "links": {
+                     "ttf": "https://amplispot-india.sgp1.cdn.digitaloceanspaces.com/fonts/arialbd.ttf"
+                  }
+               },
+               "font_weight": {
+                  "text": "Bold",
+                  "value": "bold"
+               }
+            },
+            "$$hashKey": "object:8753",
+            "title": "mobile",
+            "value": "+919004608268"
+         }
+      ],
+      "type": "images",
+      "media": "https://amplispot-india.sgp1.cdn.digitaloceanspaces.com/content_media/1644409948233.jpg"
+   }
+}
