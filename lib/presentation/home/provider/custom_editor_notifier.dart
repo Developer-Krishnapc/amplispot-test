@@ -72,7 +72,7 @@ class CustomWidgetListNotifier
   Widget getTextWidget({required String title}) {
     return Text(
       title,
-      style: AppTextTheme.semiBold18.copyWith(
+      style: AppTextTheme.semiBold14.copyWith(
         color: AppColor.white,
       ),
       overflow: TextOverflow.clip,
