@@ -56,5 +56,5 @@ jobs:
         with:
           name: android-release
           tag: v1.0.${{ github.run_number }}
-          path: build/app/outputs/bundle/release/app-release.apk
+          path: build/app/outputs/flutter-apk/*
 
