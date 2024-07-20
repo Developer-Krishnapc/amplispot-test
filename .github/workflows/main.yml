@@ -51,9 +51,10 @@ jobs:
       - name: Build APK
         run: flutter build apk --flavor production --dart-define-from-file=./env/prod.json --release
 
-      - name: Push to Releases
-        uses: ncipollo/release-action@v1
+      - name: Upload Android Release
+        uses: actions/upload-artifact@v2
         with:
-          artifacts: "build/app/outputs/apk/release/*"
+          name: android-release
           tag: v1.0.${{ github.run_number }}
-          token: ${{ secrets.TOKEN }}
+          path: build/app/outputs/bundle/release/app-release.apk
+
