@@ -81,7 +81,7 @@ jobs:
                 "text": "The APK file is attached below (base64 encoded).",
                 "facts": [{
                     "name": "File Name:",
-                    "value": "app-release.apk"
+                    "value": "app-production-release.apk"
                 }],
                 "markdown": true
             }],
