@@ -7,37 +7,37 @@ on:
     branches:
       - main
       - master
-
+ 
 name: "Build & Release"
-
+ 
 jobs:
   build:
     name: Build & Release
     runs-on: ubuntu-latest
-
+ 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
+ 
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: '12.x'
           cache: 'gradle'
-
+ 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
           cache: true
-
+ 
       - name: Flutter pub get
         run: flutter pub get
-
+ 
       - name: Generate files (Build-Runner)
-        run : flutter pub run build_runner build
-
+        run: flutter pub run build_runner build
+ 
       - name: Generate files from JSON
         env:
           ENV_PROD: ${{ secrets.ENV_PROD }}
@@ -47,14 +47,23 @@ jobs:
             exit 1
           fi
           curl -sSL --create-dirs -o env/prod.json "${ENV_PROD}"
-
+ 
       - name: Build APK
         run: flutter build apk --flavor production --dart-define-from-file=./env/prod.json --release
-
-      - name: Push to Releases
+ 
+      - name: Upload APK as Release Asset
         uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/flutter-apk/*"
           tag: v1.0.${{ github.run_number }}
           token: ${{ secrets.TOKEN }}
-
+ 
+      - name: Send APK to Microsoft Teams
+        env:
+          TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
+        run: |
+          APK_URL="https://github.com/${{ github.repository }}/releases/download/v1.0.${{ github.run_number }}/app-release.apk"
+          curl -H "Content-Type: application/json" -X POST -d '{
+            "title": "New APK Build",
+            "text": "A new APK build is available. You can download it from [this link]('"${APK_URL}"')."
+          }' "${TEAMS_WEBHOOK_URL}"
