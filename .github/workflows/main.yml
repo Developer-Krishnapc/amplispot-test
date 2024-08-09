@@ -58,42 +58,12 @@ jobs:
           tag: v1.0.${{ github.run_number }}
           token: ${{ secrets.TOKEN }}
  
-      - name: Convert APK to Base64
-        id: base64_apk
-        run: |
-          base64 build/app/outputs/flutter-apk/app-production-release.apk > apk_base64.txt
-          APK_BASE64=$(cat apk_base64.txt)
-          echo "::set-output name=apk_base64::$APK_BASE64"
-  
-      - name: Send notification to Teams
+      - name: Send APK to Microsoft Teams
         env:
           TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
         run: |
-          APK_BASE64=${{ steps.base64_apk.outputs.apk_base64 }}
-          MESSAGE=$(cat <<EOF
-          {
-            "@type": "MessageCard",
-            "@context": "http://schema.org/extensions",
-            "summary": "New APK Build",
-            "sections": [{
-                "activityTitle": "New Flutter APK Build",
-                "activitySubtitle": "Build Successful",
-                "text": "The APK file is attached below (base64 encoded).",
-                "facts": [{
-                    "name": "File Name:",
-                    "value": "app-production-release.apk"
-                }],
-                "markdown": true
-            }],
-            "potentialAction": [{
-                "@type": "OpenUri",
-                "name": "Download APK",
-                "targets": [{
-                    "os": "default",
-                    "uri": "data:application/vnd.android.package-archive;base64,$APK_BASE64"
-                }]
-            }]
-          }
-          EOF
-          )
-          curl -H "Content-Type: application/json" -d "$MESSAGE" $TEAMS_WEBHOOK_URL
+          APK_URL="https://github.com/${{ github.repository }}/releases/download/v1.0.${{ github.run_number }}/app-production-release.apk"
+          curl -H "Content-Type: application/json" -X POST -d '{
+            "title": "New APK Build",
+            "text": "A new APK build is available. You can download it from [this link]('"${APK_URL}"')."
+          }' "${TEAMS_WEBHOOK_URL}"
